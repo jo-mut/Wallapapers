@@ -22,8 +22,8 @@ android {
     }
 
     buildTypes.each {
-        it.buildConfigField( 'String', 'UnsplashSecretApiKey', ApiSecretKey)
-        it.buildConfigField( 'String', 'UnsplashAccessApiKey', ApiAccessKey)
+        it.buildConfigField('String', 'UnsplashSecretApiKey', ApiSecretKey)
+        it.buildConfigField('String', 'UnsplashAccessApiKey', ApiAccessKey)
 
     }
 }
