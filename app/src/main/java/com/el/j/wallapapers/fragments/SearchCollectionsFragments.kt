@@ -11,12 +11,14 @@ import android.view.*
 import com.el.j.wallapapers.Constants
 
 import com.el.j.wallapapers.R
+import com.el.j.wallapapers.Wallpaper
+import com.el.j.wallapapers.WallpaperViewModel
 import com.el.j.wallapapers.activities.SearchActivity
 import com.el.j.wallapapers.adapters.CollectionsRecyclerAdapter
 import com.el.j.wallapapers.models.Collection
 import com.el.j.wallapapers.models.Photo
 import com.el.j.wallapapers.services.WallpaperService
-import kotlinx.android.synthetic.main.fragment_photos.*
+import kotlinx.android.synthetic.main.fragment_search_collections.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -40,12 +42,12 @@ class SearchCollectionsFragments : Fragment() {
         searchView  = menu?.findItem(R.id.action_search)?.actionView as SearchView
         searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
-                getCollections(query)
+                getCollections(query!!)
                 return false
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                getCollections(newText)
+//                getCollections(newText)
                 return  false
             }
         })
@@ -72,7 +74,7 @@ class SearchCollectionsFragments : Fragment() {
                 .build();
 
         val wallpaperService: WallpaperService = retrofit.create(WallpaperService::class.java)
-        val call = wallpaperService.searchCollections(Constants.ACCESS_KEY,10, query!!)
+        val call = wallpaperService.searchCollections(Constants.ACCESS_KEY,10, text)
 
         call.enqueue(object : Callback<MutableList<Collection>> {
             override fun onFailure(call: Call<MutableList<Collection>>?, t: Throwable?) {
@@ -83,9 +85,11 @@ class SearchCollectionsFragments : Fragment() {
                 if (response != null) {
                     collectionsRecyclerAdapter = CollectionsRecyclerAdapter(context!!, response.body())
                     var layoutManager = LinearLayoutManager(context)
-                    photosRecyclerView.adapter = collectionsRecyclerAdapter;
-                    photosRecyclerView.layoutManager = layoutManager;
-                    photosRecyclerView.setHasFixedSize(false)
+                    searchRecyclerView.adapter = collectionsRecyclerAdapter;
+                    searchRecyclerView.layoutManager = layoutManager;
+                    searchRecyclerView.setHasFixedSize(false)
+
+
                 } else {
 
                 }

@@ -14,7 +14,7 @@ interface WallpaperService {
     @GET("search/collections")
     fun searchCollections(@Query("client_id") client_id: String,
                           @Query("per_page") per_page: Int,
-                          @Query("query") query: String): Call<MutableList<Collection>>
+                          @Query("query") query: String?): Call<MutableList<Collection>>
 
     @GET("photos")
     fun getPhotos(@Query("client_id") client_id: String,
@@ -23,6 +23,6 @@ interface WallpaperService {
     @GET("photos")
     fun searchPhotos(@Query("client_id") client_id: String,
                      @Query("per_page") per_page: Int,
-                     @Query("query") query: String): Call<MutableList<Photo>>
+                     @Query("query") query: String?): Call<MutableList<Photo>>
 
 }

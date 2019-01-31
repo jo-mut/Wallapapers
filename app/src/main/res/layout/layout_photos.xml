@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:layout_marginBottom="5dp"
     android:layout_height="match_parent">
 
     <android.support.constraint.ConstraintLayout
@@ -22,4 +23,49 @@
 
     </android.support.constraint.ConstraintLayout>
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:background="@drawable/layout_transparent_round"
+            android:padding="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_015_bookmark"
+                android:id="@+id/saveImageView"
+                android:scaleType="centerCrop"
+                android:layout_width="wrap_content"
+                android:adjustViewBounds="true"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:background="@drawable/layout_transparent_round"
+            android:padding="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_036_trash_can"
+                android:id="@+id/deleteImageView"
+                android:scaleType="centerCrop"
+                android:layout_width="wrap_content"
+                android:adjustViewBounds="true"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

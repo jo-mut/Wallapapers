@@ -11,6 +11,5 @@ data class Collection( @SerializedName("id") val id: String,
                        @SerializedName("total_photos") val total_photos: String,
                        @SerializedName("private") val private: Boolean,
                        @SerializedName("share_key") val share_key: String,
-                       @SerializedName("cover_photo") val cover_photo: Cover_Photo,
-                       @SerializedName("urls") val  urls: Urls) {
+                       @SerializedName("cover_photo") val cover_photo: Cover_Photo) {
 }

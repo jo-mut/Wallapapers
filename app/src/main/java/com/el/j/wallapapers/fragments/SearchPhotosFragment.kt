@@ -1,6 +1,8 @@
 package com.el.j.wallapapers.fragments
 
 
+import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -11,10 +13,12 @@ import android.view.*
 import com.el.j.wallapapers.Constants
 
 import com.el.j.wallapapers.R
+import com.el.j.wallapapers.Wallpaper
+import com.el.j.wallapapers.WallpaperViewModel
 import com.el.j.wallapapers.adapters.PhotosRecyclerAdapter
 import com.el.j.wallapapers.models.Photo
 import com.el.j.wallapapers.services.WallpaperService
-import kotlinx.android.synthetic.main.fragment_photos.*
+import kotlinx.android.synthetic.main.fragment_search_photos.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -23,10 +27,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 
 class SearchPhotosFragment : Fragment() {
-
-    var query: String? = null
     lateinit var searchView: SearchView
     lateinit var photosRecyclerAdapter: PhotosRecyclerAdapter
+    lateinit var viewModel: WallpaperViewModel
+    lateinit var photos: MutableList<Photo>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +48,7 @@ class SearchPhotosFragment : Fragment() {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                getPhotos(newText)
+//                getPhotos(newText)
                 return  false
             }
         })
@@ -61,8 +65,11 @@ class SearchPhotosFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         var view = inflater.inflate(R.layout.fragment_search_photos, container, false)
+
         return view
     }
+
+
 
     fun getPhotos(text: String?){
         val retrofit: Retrofit = Retrofit.Builder()
@@ -71,7 +78,7 @@ class SearchPhotosFragment : Fragment() {
                 .build();
 
         val wallpaperService: WallpaperService = retrofit.create(WallpaperService::class.java)
-        val call = wallpaperService.searchPhotos(Constants.ACCESS_KEY, 10, query!!)
+        val call = wallpaperService.searchPhotos(Constants.ACCESS_KEY, 10, text)
 
         call.enqueue(object : Callback<MutableList<Photo>> {
             override fun onFailure(call: Call<MutableList<Photo>>?, t: Throwable?) {
@@ -80,12 +87,13 @@ class SearchPhotosFragment : Fragment() {
 
             override fun onResponse(call: Call<MutableList<Photo>>?, response: Response<MutableList<Photo>>?) {
                 if (response != null) {
-                    photosRecyclerAdapter = PhotosRecyclerAdapter(context!!, response.body())
+                    photos = response.body()
+                    photosRecyclerAdapter = PhotosRecyclerAdapter(context!!, photos)
                     var layoutManager = LinearLayoutManager(context)
-                    photosRecyclerView.adapter = photosRecyclerAdapter;
-                    photosRecyclerView.layoutManager = layoutManager;
-                    photosRecyclerView.setHasFixedSize(false)
-                } else {
+                    searchRecyclerView.adapter = photosRecyclerAdapter;
+                    searchRecyclerView.layoutManager = layoutManager;
+                    searchRecyclerView.setHasFixedSize(false)
+
 
                 }
             }

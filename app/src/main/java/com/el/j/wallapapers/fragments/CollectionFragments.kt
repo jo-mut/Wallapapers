@@ -14,7 +14,7 @@ import com.el.j.wallapapers.activities.SearchActivity
 import com.el.j.wallapapers.adapters.CollectionsRecyclerAdapter
 import com.el.j.wallapapers.models.Collection
 import com.el.j.wallapapers.services.WallpaperService
-import kotlinx.android.synthetic.main.fragment_photos.*
+import kotlinx.android.synthetic.main.fragment_collection_fragments.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -76,9 +76,9 @@ class CollectionFragments : Fragment() {
                 if (response != null) {
                     collectionsRecyclerAdapter = CollectionsRecyclerAdapter(context!!, response.body())
                     var layoutManager = LinearLayoutManager(context)
-                    photosRecyclerView.adapter = collectionsRecyclerAdapter;
-                    photosRecyclerView.layoutManager = layoutManager;
-                    photosRecyclerView.setHasFixedSize(false)
+                    collectionsRecyclerView.adapter = collectionsRecyclerAdapter;
+                    collectionsRecyclerView.layoutManager = layoutManager;
+                    collectionsRecyclerView.setHasFixedSize(false)
                 } else {
 
                 }
