@@ -1,20 +1,14 @@
 package com.el.j.wallapapers.fragments
 
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
-import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.SearchView
-import android.util.Log
 import android.view.*
 import com.el.j.wallapapers.Constants
 
 import com.el.j.wallapapers.R
-import com.el.j.wallapapers.Wallpaper
-import com.el.j.wallapapers.WallpaperViewModel
 import com.el.j.wallapapers.adapters.PhotosRecyclerAdapter
 import com.el.j.wallapapers.models.Photo
 import com.el.j.wallapapers.services.WallpaperService
@@ -29,7 +23,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 class SearchPhotosFragment : Fragment() {
     lateinit var searchView: SearchView
     lateinit var photosRecyclerAdapter: PhotosRecyclerAdapter
-    lateinit var viewModel: WallpaperViewModel
     lateinit var photos: MutableList<Photo>
 
     override fun onCreate(savedInstanceState: Bundle?) {

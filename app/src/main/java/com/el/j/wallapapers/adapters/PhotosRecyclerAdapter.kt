@@ -29,14 +29,6 @@ class PhotosRecyclerAdapter(private val context: Context,
     lateinit var constraintSet: ConstraintSet
     lateinit var id: String
     lateinit var bmpUri: Uri
-    lateinit var wallpaperRepository: WallpaperRepository
-    lateinit var wallpapersDao: WallpapersDao
-
-
-    init {
-        val wallpapersDao = WallpaperDatabase.getDatabase(context).wallpapersDao()
-        wallpaperRepository = WallpaperRepository(wallpapersDao)
-    }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotosViewHolder {
@@ -80,12 +72,7 @@ class PhotosRecyclerAdapter(private val context: Context,
 
         holder.saveImageView.setOnClickListener(object: View.OnClickListener{
             override fun onClick(v: View?) {
-                id = photo.id;
-                getLocalBitmapUri(holder.photoImageView)
-                var wallpaper = Wallpaper()
-                wallpaper.id = photo.id;
-                wallpaper.image = returnImageUri().toString()
-                suspend { wallpaperRepository.insertWallpaper(wallpaper) }
+
             }
         })
     }

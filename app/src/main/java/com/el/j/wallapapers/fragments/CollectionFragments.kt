@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.StaggeredGridLayoutManager
 import android.util.Log
 import android.view.*
 import com.el.j.wallapapers.Constants
@@ -75,7 +76,7 @@ class CollectionFragments : Fragment() {
             override fun onResponse(call: Call<MutableList<Collection>>?, response: Response<MutableList<Collection>>?) {
                 if (response != null) {
                     collectionsRecyclerAdapter = CollectionsRecyclerAdapter(context!!, response.body())
-                    var layoutManager = LinearLayoutManager(context)
+                    var layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
                     collectionsRecyclerView.adapter = collectionsRecyclerAdapter;
                     collectionsRecyclerView.layoutManager = layoutManager;
                     collectionsRecyclerView.setHasFixedSize(false)

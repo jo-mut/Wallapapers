@@ -3,11 +3,6 @@ package com.el.j.wallapapers.adapters
 import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
-import com.el.j.wallapapers.Wallpaper
-import com.el.j.wallapapers.WallpaperDatabase
-import com.el.j.wallapapers.WallpaperRepository
-import com.el.j.wallapapers.WallpapersDao
-import com.el.j.wallapapers.models.Photo
 
 class WallpaperAdapter(private val context: Context)
     : RecyclerView.Adapter<PhotosViewHolder>() {

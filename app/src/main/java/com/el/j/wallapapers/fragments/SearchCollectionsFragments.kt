@@ -1,22 +1,16 @@
 package com.el.j.wallapapers.fragments
 
 
-import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.SearchView
-import android.util.Log
 import android.view.*
 import com.el.j.wallapapers.Constants
 
 import com.el.j.wallapapers.R
-import com.el.j.wallapapers.Wallpaper
-import com.el.j.wallapapers.WallpaperViewModel
-import com.el.j.wallapapers.activities.SearchActivity
 import com.el.j.wallapapers.adapters.CollectionsRecyclerAdapter
 import com.el.j.wallapapers.models.Collection
-import com.el.j.wallapapers.models.Photo
 import com.el.j.wallapapers.services.WallpaperService
 import kotlinx.android.synthetic.main.fragment_search_collections.*
 import retrofit2.Call
