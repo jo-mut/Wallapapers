@@ -11,6 +11,7 @@ import android.view.*
 import com.el.j.wallapapers.Constants
 
 import com.el.j.wallapapers.R
+import com.el.j.wallapapers.activities.BrowsePhotosActivity
 import com.el.j.wallapapers.activities.SearchActivity
 import com.el.j.wallapapers.adapters.CollectionsRecyclerAdapter
 import com.el.j.wallapapers.models.Collection
@@ -40,7 +41,7 @@ class CollectionFragments : Fragment() {
         var id = item?.itemId;
 
         if (id == R.id.action_search) {
-            var intent = Intent(activity, SearchActivity::class.java);
+            var intent = Intent(activity, BrowsePhotosActivity::class.java);
             startActivity(intent)
         }
 

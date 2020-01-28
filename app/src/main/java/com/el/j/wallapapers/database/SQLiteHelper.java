@@ -14,7 +14,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String createDatabase = "CREATE TABLE " + DatabaseManager.DATABASE_TABLE +
-                "(" + DatabaseManager.ROW_ID + " PRIMARY KEY AUTOINCREMENT,"
+                "(" + DatabaseManager.ROW_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
                 + DatabaseManager.ROW_NAME + " TEXT,"
                 + DatabaseManager.ROW_IMAGE + " BLOB" + ")";
 

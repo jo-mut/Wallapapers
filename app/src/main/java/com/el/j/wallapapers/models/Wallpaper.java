@@ -1,4 +1,4 @@
-package com.el.j.wallapapers.database;
+package com.el.j.wallapapers.models;
 
 public class Wallpaper {
     int id;
